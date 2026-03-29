@@ -1,4 +1,4 @@
-source ~\.vim\vundles.vim
+source ~/.vim/vundles.vim
 
 " encoding dectection
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
@@ -9,8 +9,10 @@ filetype plugin indent on
 " enable syntax hightlight and completion
 syntax on
 
-" Debuger 
+"#################################
+" Debuger
 packadd! termdebug
+"#################################
 
 " Vim UI
 "--------
@@ -96,19 +98,6 @@ hi Tb_Normal guifg=white ctermfg=white
 hi Tb_Changed guifg=green ctermfg=green
 hi Tb_VisibleNormal ctermbg=252 ctermfg=235
 hi Tb_VisibleChanged guifg=green ctermbg=252 ctermfg=white
-
-" Map Alt+1 to Alt+9 to switch to the corresponding tab
-nnoremap <M-1> 1gt
-nnoremap <M-2> 2gt
-nnoremap <M-3> 3gt
-nnoremap <M-4> 4gt
-nnoremap <M-5> 5gt
-nnoremap <M-6> 6gt
-nnoremap <M-7> 7gt
-nnoremap <M-8> 8gt
-nnoremap <M-9> 9gt
-" Optional: Map Alt+0 to go to the 10th tab
-nnoremap <M-0> 10gt
 
 " easy-motion
 let g:EasyMotion_leader_key = '<Leader>'
@@ -226,7 +215,24 @@ nnoremap ; :
 :command Wq wq
 :command Q q
 :command Qa qa
-:command QA qa
+:command QA qa]
+
+"Doxygen
+augroup DoxygenHighlight
+    autocmd!
+    autocmd FileType c,cpp,h,hpp,java,php syntax include @Doxygen syntax/doxygen.vim
+    autocmd FileType c,cpp,h,hpp,java,php syntax region doxygenComment start="/\*\*" end="\*/" contains=@Doxygen
+    autocmd FileType c,cpp,h,hpp,java,php syntax region doxygenComment start="///" end="$" contains=@Doxygen
+augroup END
+autocmd FileType c,cpp,h,hpp setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,:///,://
+let g:DoxygenToolkit_briefTag_pre="@brief "
+let g:DoxygenToolkit_paramTag_pre="@param "
+let g:DoxygenToolkit_returnTag="@returns   "
+let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
+let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------"
+let g:DoxygenToolkit_authorName="Vitaliy Kolesnikov"
+let g:DoxygenToolkit_licenseTag="MIT"
+let g:DoxygenToolkit_briefTag_funcName="yes" " Включать имя функции в @brief
 
 " for macvim
 if has("gui_running")

@@ -46,6 +46,9 @@ Plugin 'bronson/vim-trailing-whitespace'
 " Plugin 'humiaozuzu/fcitx-status'
 Plugin 'nvie/vim-togglemouse'
 
+" Doxygen
+Plugin 'vim-scripts/DoxygenToolkit.vim'
+
 " Syntax/Indent for language enhancement
 " markup language
 Plugin 'tpope/vim-markdown'
@@ -63,6 +66,5 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'chriskempson/vim-tomorrow-theme'
-
 
 filetype plugin indent on     " required!
